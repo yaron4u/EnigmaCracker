@@ -42,6 +42,8 @@ Please contact me at vanitious@gmail.com for help, I will personally help you!
 
 If you want to thank me for the prize you found, I will appreciate it!
 
+Also star the repo, it will really help me and everyone!
+
 BTC: bc1qqa207jge9e48syfeevduumq0p6ct79cglu3gn6
 
 ETH: 0xD8E91636cc6F55221545BFB7e1E417f0D2242d17
