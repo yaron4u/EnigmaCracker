@@ -33,3 +33,15 @@ git clone https://github.com/yaron4u/EnigmaCracker
 navigate to the code installed: cd path\to\directory
 python EnigmaCracker.py
 ```
+
+## How to open the founded wallet?
+
+Please contact me at vanitious@gmail.com for help, I will personally help you!
+
+### Donation
+
+If you want to thank me for the prize you found, I will appreciate it!
+
+BTC: bc1qqa207jge9e48syfeevduumq0p6ct79cglu3gn6
+
+ETH: 0xD8E91636cc6F55221545BFB7e1E417f0D2242d17
