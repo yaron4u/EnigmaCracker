@@ -13,3 +13,15 @@ This script is developed for educational and research purposes only.
 4. The creator of this script cannot and will not be held responsible for any damages, repercussions, or any negative outcomes that result from using this script.
 
 If you do not agree to these terms, please do not use or distribute this code.
+
+## Installation
+
+```
+git clone https://github.com/yaron4u/EnigmaCracker
+```
+## How to run (Recommended in cmd)
+
+```
+navigate to the code installed: cd path\to\directory
+python EnigmaCracker.py
+```
