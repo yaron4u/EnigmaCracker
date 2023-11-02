@@ -27,6 +27,8 @@ If EnigmaCracker finds a wallet with a balance, it will create `wallets_with_bal
 ```
 git clone https://github.com/yaron4u/EnigmaCracker
 ```
+Don't forget to `pip install ~library~` from `requirements.txt`
+
 ## How to run (Recommended in cmd)
 
 ```
