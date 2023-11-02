@@ -1,3 +1,4 @@
+import os
 import requests
 from bip_utils import (
     Bip39MnemonicGenerator,
@@ -43,12 +44,16 @@ def check_balance(address):
 
 
 def write_to_file(seed, address, balance):
-    # Write the seed, address, and balance to a file
-    with open("wallets_with_balance.txt", "a") as f:
+    # Get the absolute path of the directory where the script is located
+    directory = os.path.dirname(os.path.abspath(__file__))
+    # Create the absolute path for the file
+    file_path = os.path.join(directory, "wallets_with_balance.txt")
+
+    # Write the seed, address, and balance to a file in the script's directory
+    with open(file_path, "a") as f:
         f.write(f"Seed: {seed}\n")
         f.write(f"Address: {address}\n")
-        f.write(f"Balance: {balance} BTC\n")
-        f.write("\n")
+        f.write(f"Balance: {balance} BTC\n\n")
 
 
 def main():
@@ -70,4 +75,5 @@ def main():
             write_to_file(seed, address, balance)
 
 
-main()
+if __name__ == "__main__":
+    main()
