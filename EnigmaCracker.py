@@ -57,22 +57,26 @@ def write_to_file(seed, address, balance):
 
 
 def main():
-    while True:
-        seed = bip()
-        address = seed_to_address(seed)
-        balance = check_balance(address)
+    try:
+        while True:
+            seed = bip()
+            address = seed_to_address(seed)
+            balance = check_balance(address)
 
-        print("Seed:")
-        print("\___", seed)
-        print("Address:")
-        print("\___", address)
-        print("Balance:")
-        print("\___", balance, "BTC")
-        print("\n")
+            print("Seed:")
+            print("\___", seed)
+            print("Address:")
+            print("\___", address)
+            print("Balance:")
+            print("\___", balance, "BTC")
+            print("\n")
 
-        if balance > 0:
-            print("Wallet with balance found!")
-            write_to_file(seed, address, balance)
+            if balance > 0:
+                print("(!) Wallet with balance found!")
+                write_to_file(seed, address, balance)
+
+    except KeyboardInterrupt:
+        print("Program interrupted by user. Exiting...")
 
 
 if __name__ == "__main__":
