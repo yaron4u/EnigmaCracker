@@ -123,9 +123,7 @@ def main():
             # ETH
             ETH_address = bip44_eth_wallet_from_seed(seed)
             ###!
-            etherscan_api_key = (
-                "FK7A2X1IVBQYGB81Z23E6RPZ13XM5SXMWV"  # API key for Etherscan
-            )
+            etherscan_api_key = "YOUR_API_KEY"  # API key for Etherscan
             ###!
             ETH_balance = check_ETH_balance(ETH_address, etherscan_api_key)
             print("ETH address:")
