@@ -29,12 +29,26 @@ git clone https://github.com/yaron4u/EnigmaCracker
 ```
 Don't forget to `pip install ~library~` from `requirements.txt`
 
+## Requirements
+
+Before running EnigmaCracker you must enter your etherscan API key in the code (The code will not run if you don't do it)
+```
+navigate to the code installed: cd path\to\directory
+edit EnigmaCracker.py
+search for etherscan_api_key
+etherscan_api_key = "YOUR_API_KEY" <- put your API key here
+```
+To get the API key follow this guide: https://docs.etherscan.io/getting-started/viewing-api-usage-statistics
 ## How to run (Recommended in cmd)
 
 ```
 navigate to the code installed: cd path\to\directory
 python EnigmaCracker.py
 ```
+
+## Major updates
+
+EnigmaCracker can now find wallets with BTC and ETH
 
 ## How to open the founded wallet?
 
