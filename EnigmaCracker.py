@@ -121,20 +121,22 @@ def main():
             print("\n")
 
             # ETH
-            eth_address = bip44_eth_wallet_from_seed(seed)
+            ETH_address = bip44_eth_wallet_from_seed(seed)
             ###!
-            etherscan_api_key = "YOUR_API_KEY"  # API key for Etherscan
+            etherscan_api_key = (
+                "FK7A2X1IVBQYGB81Z23E6RPZ13XM5SXMWV"  # API key for Etherscan
+            )
             ###!
-            ETH_balance = check_ETH_balance(eth_address, etherscan_api_key)
+            ETH_balance = check_ETH_balance(ETH_address, etherscan_api_key)
             print("ETH address:")
-            print("\___", eth_address)
+            print("\___", ETH_address)
             print("ETH balance:")
             print("\___", ETH_balance, "ETH")
 
             # Check if the address has a balance
             if BTC_balance > 0 or ETH_balance > 0:
                 print("(!) Wallet with balance found!")
-                write_to_file(seed, BTC_address, BTC_balance, eth_address, ETH_balance)
+                write_to_file(seed, BTC_address, BTC_balance, ETH_address, ETH_balance)
 
     except KeyboardInterrupt:
         print("Program interrupted by user. Exiting...")
