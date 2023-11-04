@@ -15,7 +15,7 @@ def bip():
     return Bip39MnemonicGenerator().FromWordsNumber(Bip39WordsNum.WORDS_NUM_12)
 
 
-def bip44_eth_wallet_from_seed(seed):
+def bip44_ETH_wallet_from_seed(seed):
     # Generate an Ethereum wallet from a BIP39 seed.
 
     # Generate the seed from the mnemonic
@@ -39,7 +39,7 @@ def bip44_eth_wallet_from_seed(seed):
     return eth_address
 
 
-def seed_to_address(seed):
+def bip44_BTC_seed_to_address(seed):
     # Generate the seed from the mnemonic
     seed_bytes = Bip39SeedGenerator(seed).Generate()
 
@@ -109,7 +109,7 @@ def main():
         while True:
             seed = bip()
             # BTC
-            BTC_address = seed_to_address(seed)
+            BTC_address = bip44_BTC_seed_to_address(seed)
             BTC_balance = check_BTC_balance(BTC_address)
 
             print("Seed:")
@@ -121,7 +121,7 @@ def main():
             print("\n")
 
             # ETH
-            ETH_address = bip44_eth_wallet_from_seed(seed)
+            ETH_address = bip44_ETH_wallet_from_seed(seed)
             ###!
             etherscan_api_key = "YOUR_API_KEY"  # API key for Etherscan
             ###!
