@@ -1,3 +1,5 @@
+import subprocess
+import sys
 import os
 import requests
 from bip_utils import (
@@ -8,6 +10,17 @@ from bip_utils import (
     Bip44Changes,
     Bip39WordsNum,
 )
+
+# Check if we've set the environment variable indicating we're in the correct CMD
+if os.environ.get("RUNNING_IN_NEW_CMD") != "TRUE":
+    # Set the environment variable for the new CMD session
+    os.environ["RUNNING_IN_NEW_CMD"] = "TRUE"
+
+    # Open a new command prompt and run this script
+    subprocess.run(f'start cmd.exe /K python "{__file__}"', shell=True)
+
+    # Exit this run, as we've opened a new CMD
+    sys.exit()
 
 
 def bip():
