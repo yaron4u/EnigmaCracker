@@ -24,42 +24,46 @@ If EnigmaCracker finds a wallet with a balance, it will create `wallets_with_bal
 
 ## Installation
 
+Clone the repository using:
+
 ```
 git clone https://github.com/yaron4u/EnigmaCracker
 ```
-Don't forget to `pip install ~library~` from `requirements.txt`
-
-## Requirements
-
-Before running EnigmaCracker you must enter your etherscan API key in the code (The code will not run if you don't do it)
+Remember to install the required libraries using:
 ```
-navigate to the code installed: cd path\to\directory
-edit EnigmaCracker.py
-search for etherscan_api_key
-etherscan_api_key = "YOUR_API_KEY" <- put your API key here
+pip install -r requirements.txt
 ```
-To get the API key follow this guide: https://docs.etherscan.io/getting-started/viewing-api-usage-statistics
-## How to run (Recommended in cmd)
+## Configuration
+
+1. Obtain an Etherscan API key following the instructions [here](https://docs.etherscan.io/getting-started/viewing-api-usage-statistics).
+2. Navigate to the script's directory and insert your API key:
+```
+# In EnigmaCracker.py
+etherscan_api_key = "YOUR_API_KEY"  # Replace with your actual API key
+```
+## Execution
+
+Run EnigmaCracker from the command line:
 
 ```
-navigate to the code installed: cd path\to\directory
+cd path/to/EnigmaCracker
 python EnigmaCracker.py
 ```
 
-## Major updates
+## Updates
 
-EnigmaCracker can now find wallets with BTC and ETH
+- EnigmaCracker now supports detection of both BTC and ETH wallets.
 
-## How to open the founded wallet?
+## How to open the discovered wallet?
 
-Please contact me at vanitious@gmail.com for help, I will personally help you!
+For assistance with accessing a discovered wallet, reach out to [vanitious@gmail.com](mailto:vanitious@gmail.com), I will personally help you!
 
-### Donation
+### Contributions
 
 If you want to thank me for the prize you found, I will appreciate it!
-
-Also star the repo, it will really help me and everyone!
 
 BTC: bc1qqa207jge9e48syfeevduumq0p6ct79cglu3gn6
 
 ETH: 0xD8E91636cc6F55221545BFB7e1E417f0D2242d17
+
+Star and watch the repo for updates, and your support is greatly appreciated!
