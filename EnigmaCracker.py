@@ -99,10 +99,10 @@ def check_ETH_balance(address, etherscan_api_key):
             balance = int(data["result"]) / 1e18
             return balance
         else:
-            print("Error getting balance:", data["message"])
+            logging.error("Error getting balance: %s", data["message"])
             return 0
     except Exception as e:
-        print("Error checking balance:", str(e))
+        logging.error("Error checking balance: %s", str(e))
         return 0
 
 
@@ -114,7 +114,7 @@ def check_BTC_balance(address):
         balance = data[address]["final_balance"]
         return balance / 100000000  # Convert satoshi to bitcoin
     except Exception as e:
-        print("Error checking balance:", str(e))
+        logging.error("Error checking balance: %s", str(e))
         return 0
 
 
