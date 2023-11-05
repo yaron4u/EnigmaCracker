@@ -22,6 +22,8 @@ We'll begin by delving into the foundational concepts. Upon establishing a walle
 
 If EnigmaCracker finds a wallet with a balance, it will create `wallets_with_balance.txt` file that will contain the info of the discovered wallet.
 
+Upon execution, EnigmaCracker generates a comprehensive log file named `enigmacracker.log`, which neatly records the entire session history for review and analysis.
+
 ## Installation
 
 Clone the repository using:
