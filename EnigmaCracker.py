@@ -2,6 +2,7 @@ import subprocess
 import sys
 import os
 import requests
+import logging
 from bip_utils import (
     Bip39MnemonicGenerator,
     Bip39SeedGenerator,
@@ -9,6 +10,21 @@ from bip_utils import (
     Bip44Coins,
     Bip44Changes,
     Bip39WordsNum,
+)
+
+# Get the absolute path of the directory where the script is located
+directory = os.path.dirname(os.path.abspath(__file__))
+# Create the absolute path for the log file
+log_file_path = os.path.join(directory, "enigmacracker.log")
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(log_file_path),  # Log to a file
+        logging.StreamHandler(sys.stdout),  # Log to standard output
+    ],
 )
 
 # Check if we've set the environment variable indicating we're in the correct CMD
@@ -110,11 +126,9 @@ def write_to_file(seed, BTC_address, BTC_balance, ETH_address, ETH_balance):
 
     # Write the seed, address, and balance to a file in the script's directory
     with open(file_path, "a") as f:
-        f.write(f"Seed: {seed}\n")
-        f.write(f"Address: {BTC_address}\n")
-        f.write(f"Balance: {BTC_balance} BTC\n\n")
-        f.write(f"Ethereum Address: {ETH_address}\n")
-        f.write(f"Balance: {ETH_balance} ETH\n\n")
+        log_message = f"Seed: {seed}\nAddress: {BTC_address}\nBalance: {BTC_balance} BTC\n\nEthereum Address: {ETH_address}\nBalance: {ETH_balance} ETH\n\n"
+        f.write(log_message)
+        logging.info(f"Written to file: {log_message}")
 
 
 def main():
@@ -125,13 +139,10 @@ def main():
             BTC_address = bip44_BTC_seed_to_address(seed)
             BTC_balance = check_BTC_balance(BTC_address)
 
-            print("Seed:")
-            print("\___", seed)
-            print("BTC address:")
-            print("\___", BTC_address)
-            print("BTC balance:")
-            print("\___", BTC_balance, "BTC")
-            print("\n")
+            logging.info(f"Seed: {seed}")
+            logging.info(f"BTC address: {BTC_address}")
+            logging.info(f"BTC balance: {BTC_balance} BTC")
+            logging.info("")
 
             # ETH
             ETH_address = bip44_ETH_wallet_from_seed(seed)
@@ -139,18 +150,16 @@ def main():
             etherscan_api_key = "YOUR_API_KEY"  # API key for Etherscan
             ###!
             ETH_balance = check_ETH_balance(ETH_address, etherscan_api_key)
-            print("ETH address:")
-            print("\___", ETH_address)
-            print("ETH balance:")
-            print("\___", ETH_balance, "ETH")
+            logging.info(f"ETH address: {ETH_address}")
+            logging.info(f"ETH balance: {ETH_balance} ETH")
 
             # Check if the address has a balance
             if BTC_balance > 0 or ETH_balance > 0:
-                print("(!) Wallet with balance found!")
+                logging.info("(!) Wallet with balance found!")
                 write_to_file(seed, BTC_address, BTC_balance, ETH_address, ETH_balance)
 
     except KeyboardInterrupt:
-        print("Program interrupted by user. Exiting...")
+        logging.info("Program interrupted by user. Exiting...")
 
 
 if __name__ == "__main__":
