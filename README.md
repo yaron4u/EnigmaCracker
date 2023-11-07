@@ -38,10 +38,10 @@ pip install -r requirements.txt
 ## Configuration
 
 1. Obtain an Etherscan API key following the instructions [here](https://docs.etherscan.io/getting-started/viewing-api-usage-statistics).
-2. Navigate to the script's directory and insert your API key:
+2. Navigate to the script's directory and insert your API key in EnigmaCracker.env:
 ```
-# In EnigmaCracker.py
-etherscan_api_key = "YOUR_API_KEY"  # Replace with your actual API key
+# In EnigmaCracker.env
+etherscan_api_key = your_api_key_here <--- Replace with your actual API key
 ```
 ## Execution
 
