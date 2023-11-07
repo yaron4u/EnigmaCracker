@@ -13,12 +13,17 @@ from bip_utils import (
     Bip39WordsNum,
 )
 
+# Constants
+LOG_FILE_NAME = "enigmacracker.log"
+ENV_FILE_NAME = "EnigmaCracker.env"
+WALLETS_FILE_NAME = "wallets_with_balance.txt"
+
 # Get the absolute path of the directory where the script is located
 directory = os.path.dirname(os.path.abspath(__file__))
-# Create the absolute path for the log file
-log_file_path = os.path.join(directory, "enigmacracker.log")
-# Create the absolute path for the .env file
-env_file_path = os.path.join(directory, "EnigmaCracker.env")
+# Initialize directory paths
+log_file_path = os.path.join(directory, LOG_FILE_NAME)
+env_file_path = os.path.join(directory, ENV_FILE_NAME)
+wallets_file_path = os.path.join(directory, WALLETS_FILE_NAME)
 
 # Configure logging
 logging.basicConfig(
@@ -125,13 +130,8 @@ def check_BTC_balance(address):
 
 
 def write_to_file(seed, BTC_address, BTC_balance, ETH_address, ETH_balance):
-    # Get the absolute path of the directory where the script is located
-    directory = os.path.dirname(os.path.abspath(__file__))
-    # Create the absolute path for the file
-    file_path = os.path.join(directory, "wallets_with_balance.txt")
-
     # Write the seed, address, and balance to a file in the script's directory
-    with open(file_path, "a") as f:
+    with open(wallets_file_path, "a") as f:
         log_message = f"Seed: {seed}\nAddress: {BTC_address}\nBalance: {BTC_balance} BTC\n\nEthereum Address: {ETH_address}\nBalance: {ETH_balance} ETH\n\n"
         f.write(log_message)
         logging.info(f"Written to file: {log_message}")
