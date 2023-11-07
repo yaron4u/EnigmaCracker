@@ -4,3 +4,4 @@ bip_utils
 sys
 subprocess
 logging
+python-dotenv
