@@ -3,6 +3,7 @@ import sys
 import os
 import requests
 import logging
+from dotenv import load_dotenv
 from bip_utils import (
     Bip39MnemonicGenerator,
     Bip39SeedGenerator,
@@ -16,6 +17,8 @@ from bip_utils import (
 directory = os.path.dirname(os.path.abspath(__file__))
 # Create the absolute path for the log file
 log_file_path = os.path.join(directory, "enigmacracker.log")
+# Create the absolute path for the .env file
+env_file_path = os.path.join(directory, "EnigmaCracker.env")
 
 # Configure logging
 logging.basicConfig(
@@ -26,6 +29,9 @@ logging.basicConfig(
         logging.StreamHandler(sys.stdout),  # Log to standard output
     ],
 )
+
+# Load environment variables from .env file
+load_dotenv(env_file_path)
 
 # Check if we've set the environment variable indicating we're in the correct CMD
 if os.environ.get("RUNNING_IN_NEW_CMD") != "TRUE":
@@ -147,7 +153,11 @@ def main():
             # ETH
             ETH_address = bip44_ETH_wallet_from_seed(seed)
             ###!
-            etherscan_api_key = "YOUR_API_KEY"  # API key for Etherscan
+            etherscan_api_key = os.getenv("ETHERSCAN_API_KEY")
+            if not etherscan_api_key:
+                raise ValueError(
+                    "The Etherscan API key must be set in the environment variables."
+                )
             ###!
             ETH_balance = check_ETH_balance(ETH_address, etherscan_api_key)
             logging.info(f"ETH address: {ETH_address}")
