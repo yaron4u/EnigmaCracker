@@ -5,3 +5,4 @@ sys
 subprocess
 logging
 python-dotenv
+platform
