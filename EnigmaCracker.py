@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import os
+import platform
 import requests
 import logging
 from dotenv import load_dotenv
@@ -43,8 +44,16 @@ if os.environ.get("RUNNING_IN_NEW_CMD") != "TRUE":
     # Set the environment variable for the new CMD session
     os.environ["RUNNING_IN_NEW_CMD"] = "TRUE"
 
-    # Open a new command prompt and run this script
-    subprocess.run(f'start cmd.exe /K python "{__file__}"', shell=True)
+    # Determine the operating system
+    os_type = platform.system()
+
+    # For Windows
+    if os_type == "Windows":
+        subprocess.run(f'start cmd.exe /K python "{__file__}"', shell=True)
+
+    # For Linux
+    elif os_type == "Linux":
+        subprocess.run(f"gnome-terminal -- python3 {__file__}", shell=True)
 
     # Exit this run, as we've opened a new CMD
     sys.exit()
