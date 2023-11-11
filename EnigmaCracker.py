@@ -4,6 +4,7 @@ import os
 import platform
 import requests
 import logging
+import time
 from dotenv import load_dotenv
 from bip_utils import (
     Bip39MnemonicGenerator,
@@ -104,38 +105,52 @@ def bip44_BTC_seed_to_address(seed):
     return bip44_addr_ctx.PublicKey().ToAddress()
 
 
-def check_ETH_balance(address, etherscan_api_key):
+def check_ETH_balance(address, etherscan_api_key, retries=3, delay=5):
     # Etherscan API endpoint to check the balance of an address
     api_url = f"https://api.etherscan.io/api?module=account&action=balance&address={address}&tag=latest&apikey={etherscan_api_key}"
 
-    try:
-        # Make a request to the Etherscan API
-        response = requests.get(api_url)
-        data = response.json()
+    for attempt in range(retries):
+        try:
+            # Make a request to the Etherscan API
+            response = requests.get(api_url)
+            data = response.json()
 
-        # Check if the request was successful
-        if data["status"] == "1":
-            # Convert Wei to Ether (1 Ether = 10^18 Wei)
-            balance = int(data["result"]) / 1e18
-            return balance
-        else:
-            logging.error("Error getting balance: %s", data["message"])
-            return 0
-    except Exception as e:
-        logging.error("Error checking balance: %s", str(e))
-        return 0
+            # Check if the request was successful
+            if data["status"] == "1":
+                # Convert Wei to Ether (1 Ether = 10^18 Wei)
+                balance = int(data["result"]) / 1e18
+                return balance
+            else:
+                logging.error("Error getting balance: %s", data["message"])
+                return 0
+        except Exception as e:
+            if attempt < retries - 1:
+                logging.error(
+                    f"Error checking balance, retrying in {delay} seconds: {str(e)}"
+                )
+                time.sleep(delay)
+            else:
+                logging.error("Error checking balance: %s", str(e))
+                return 0
 
 
-def check_BTC_balance(address):
+def check_BTC_balance(address, retries=3, delay=5):
     # Check the balance of the address
-    try:
-        response = requests.get(f"https://blockchain.info/balance?active={address}")
-        data = response.json()
-        balance = data[address]["final_balance"]
-        return balance / 100000000  # Convert satoshi to bitcoin
-    except Exception as e:
-        logging.error("Error checking balance: %s", str(e))
-        return 0
+    for attempt in range(retries):
+        try:
+            response = requests.get(f"https://blockchain.info/balance?active={address}")
+            data = response.json()
+            balance = data[address]["final_balance"]
+            return balance / 100000000  # Convert satoshi to bitcoin
+        except Exception as e:
+            if attempt < retries - 1:
+                logging.error(
+                    f"Error checking balance, retrying in {delay} seconds: {str(e)}"
+                )
+                time.sleep(delay)
+            else:
+                logging.error("Error checking balance: %s", str(e))
+                return 0
 
 
 def write_to_file(seed, BTC_address, BTC_balance, ETH_address, ETH_balance):
