@@ -40,6 +40,12 @@ logging.basicConfig(
 # Load environment variables from .env file
 load_dotenv(env_file_path)
 
+# Environment variable validation
+required_env_vars = ["ETHERSCAN_API_KEY"]
+missing_vars = [var for var in required_env_vars if not os.getenv(var)]
+if missing_vars:
+    raise EnvironmentError(f"Missing environment variables: {', '.join(missing_vars)}")
+
 # Check if we've set the environment variable indicating we're in the correct CMD
 if os.environ.get("RUNNING_IN_NEW_CMD") != "TRUE":
     # Set the environment variable for the new CMD session
