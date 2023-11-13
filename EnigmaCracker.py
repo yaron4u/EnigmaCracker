@@ -20,6 +20,9 @@ LOG_FILE_NAME = "enigmacracker.log"
 ENV_FILE_NAME = "EnigmaCracker.env"
 WALLETS_FILE_NAME = "wallets_with_balance.txt"
 
+# Global counter for the number of wallets scanned
+wallets_scanned = 0
+
 # Get the absolute path of the directory where the script is located
 directory = os.path.dirname(os.path.abspath(__file__))
 # Initialize directory paths
@@ -64,6 +67,11 @@ if os.environ.get("RUNNING_IN_NEW_CMD") != "TRUE":
 
     # Exit this run, as we've opened a new CMD
     sys.exit()
+
+
+def update_cmd_title():
+    # Update the CMD title with the current number of wallets scanned
+    os.system(f"title EnigmaCracker.py - Wallets Scanned: {wallets_scanned}")
 
 
 def bip():
@@ -168,6 +176,7 @@ def write_to_file(seed, BTC_address, BTC_balance, ETH_address, ETH_balance):
 
 
 def main():
+    global wallets_scanned
     try:
         while True:
             seed = bip()
@@ -192,6 +201,10 @@ def main():
             ETH_balance = check_ETH_balance(ETH_address, etherscan_api_key)
             logging.info(f"ETH address: {ETH_address}")
             logging.info(f"ETH balance: {ETH_balance} ETH")
+
+            # Increment the counter and update the CMD title
+            wallets_scanned += 1
+            update_cmd_title()
 
             # Check if the address has a balance
             if BTC_balance > 0 or ETH_balance > 0:
