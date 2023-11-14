@@ -100,7 +100,7 @@ python EnigmaCracker.py
    - Open the `docker-compose.yml` file and replace `your_etherscan_api_key` with your actual Etherscan API key.
 
 3. **Building the Docker Image**  
-   From the root directory of the project (where the `Dockerfile` is located), run the following command to build the Docker image:
+   From the root directory of the project in the EnigmaCracker-Docker folder (where the `Dockerfile` is located), run the following command to build the Docker image:
    ```
    docker-compose build
    ```
