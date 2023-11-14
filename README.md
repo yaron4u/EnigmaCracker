@@ -78,6 +78,58 @@ Run EnigmaCracker from the command line:
 cd path/to/EnigmaCracker
 python EnigmaCracker.py
 ```
+---
+## Running EnigmaCracker in Docker
+
+### Prerequisites
+- Docker installed on your system. You can download and install Docker from [Docker's official website](https://www.docker.com/get-started).
+- Docker Compose (usually comes with the Docker installation).
+
+### Steps to Run
+
+1. **Clone the Repository**  
+   If you haven't already, clone the EnigmaCracker repository to your local machine:
+   ```
+   git clone https://github.com/yaron4u/EnigmaCracker
+   ```
+
+2. **Setting Up Environment Variables**  
+   Before running the Docker container, you need to set up your environment variables:
+   - Navigate to the cloned directory.
+   - Open the `EnigmaCracker.env` file and replace `your_etherscan_api_key` with your actual Etherscan API key.
+   - Open the `docker-compose.yml` file and replace `your_etherscan_api_key` with your actual Etherscan API key.
+
+3. **Building the Docker Image**  
+   From the root directory of the project (where the `Dockerfile` is located), run the following command to build the Docker image:
+   ```
+   docker-compose build
+   ```
+   This command reads the `Dockerfile` and `docker-compose.yml` to build the EnigmaCracker Docker image.
+
+4. **Running the Docker Container**  
+   After the build is complete, start the Docker container using Docker Compose:
+   ```
+   docker-compose up
+   ```
+   This command starts the EnigmaCracker service defined in `docker-compose.yml`. The script inside the Docker container (`EC.py`) will automatically execute.
+
+5. **Viewing Logs and Output**  
+   The output of the script, including any logs, will be displayed in your terminal. Additionally, log files and any generated files like `wallets_with_balance.txt` will be stored in the `./data` directory on your host machine, which is mapped to `/usr/src/app/data` in the container for persistent storage.
+
+6. **Stopping the Container**  
+   To stop the Docker container, use the command:
+   ```
+   docker-compose down
+   ```
+   This command stops and removes the containers, networks, and volumes created by `docker-compose up`.
+
+### Note
+- The Docker environment provides an isolated and consistent runtime for EnigmaCracker.
+- Ensure that the Docker daemon is running before executing these commands.
+- Adjustments to the script or environment variables require a rebuild of the Docker image for changes to take effect.
+- **Modified Script for Docker**: The Docker version of EnigmaCracker runs a slightly modified version of the script (`EC.py`) compared to the standalone version. These modifications are specifically tailored for the Docker environment to ensure smooth operation within a container. For instance, any code segments that require GUI interaction or OS-specific commands have been adjusted or removed since Docker containers typically run in a headless (non-GUI) environment.
+- **Streamlined Dependencies**: The `requirements.txt` file for the Docker version contains fewer libraries. This is because Docker provides a controlled environment where only the necessary dependencies are included to run the script. This streamlined approach helps in reducing the overall size of the Docker image and improves the efficiency of the script within the container.
+---
 
 ## Updates
 
