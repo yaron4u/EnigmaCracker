@@ -1,0 +1,3 @@
+requests
+bip_utils
+python-dotenv

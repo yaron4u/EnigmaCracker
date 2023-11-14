@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  enigmacracker:
+    build: .
+    environment:
+      - ETHERSCAN_API_KEY=your_etherscan_api_key
+    volumes:
+      - ./data:/usr/src/app/data
