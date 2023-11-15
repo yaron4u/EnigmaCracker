@@ -55,18 +55,18 @@ Through the integration of BIP39 and BIP44 protocols, EnigmaCracker serves as a 
 
 Clone the repository using:
 
-```
+```bash
 git clone https://github.com/yaron4u/EnigmaCracker
 ```
 Remember to install the required libraries using:
-```
+```bash
 pip install -r requirements.txt
 ```
 ## Configuration
 
 1. Obtain an Etherscan API key following the instructions [here](https://docs.etherscan.io/getting-started/viewing-api-usage-statistics).
 2. Navigate to the script's directory and insert your API key in EnigmaCracker.env:
-```
+```bash
 # In EnigmaCracker.env
 etherscan_api_key = your_api_key_here <--- Replace with your actual API key
 ```
@@ -74,7 +74,7 @@ etherscan_api_key = your_api_key_here <--- Replace with your actual API key
 
 Run EnigmaCracker from the command line:
 
-```
+```bash
 cd path/to/EnigmaCracker
 python EnigmaCracker.py
 ```
@@ -89,7 +89,7 @@ python EnigmaCracker.py
 
 1. **Clone the Repository**  
    If you haven't already, clone the EnigmaCracker repository to your local machine:
-   ```
+   ```bash
    git clone https://github.com/yaron4u/EnigmaCracker
    ```
 
@@ -101,14 +101,14 @@ python EnigmaCracker.py
 
 3. **Building the Docker Image**  
    From the root directory of the project in the EnigmaCracker-Docker folder (where the `Dockerfile` is located), run the following command to build the Docker image:
-   ```
+   ```bash
    docker-compose build
    ```
    This command reads the `Dockerfile` and `docker-compose.yml` to build the EnigmaCracker Docker image.
 
 4. **Running the Docker Container**  
    After the build is complete, start the Docker container using Docker Compose:
-   ```
+   ```bash
    docker-compose up
    ```
    This command starts the EnigmaCracker service defined in `docker-compose.yml`. The script inside the Docker container (`EC.py`) will automatically execute.
@@ -118,7 +118,7 @@ python EnigmaCracker.py
 
 6. **Stopping the Container**  
    To stop the Docker container, use the command:
-   ```
+   ```bash
    docker-compose down
    ```
    This command stops and removes the containers, networks, and volumes created by `docker-compose up`.
@@ -144,20 +144,20 @@ This guide will walk you through the process of using EnigmaCracker on AWS. The 
 
 2. **Authenticate Docker to Your ECR Repository:**
    - Retrieve the `docker login` command that you can use to authenticate your Docker client to your registry:
-     ```
+     ```bash
      aws ecr get-login-password --region [your-region] | docker login --username AWS --password-stdin [your-account-id].dkr.ecr.[your-region].amazonaws.com
      ```
    - Replace `[your-region]` and `[your-account-id]` with your AWS region and account ID.
 
 3. **Tag Your Docker Image:**
    - Tag your local EnigmaCracker Docker image with the ECR repository URI:
-     ```
+     ```bash
      docker tag enigmacracker:latest [your-account-id].dkr.ecr.[your-region].amazonaws.com/enigmacracker-docker:latest
      ```
 
 4. **Push the Image to ECR:**
    - Push your Docker image to the ECR repository:
-     ```
+     ```bash
      docker push [your-account-id].dkr.ecr.[your-region].amazonaws.com/enigmacracker-docker:latest
      ```
 
@@ -183,7 +183,7 @@ This guide will walk you through the process of using EnigmaCracker on AWS. The 
 1. **Install Docker on EC2 Instance:**
    - Connect to your EC2 instance via SSH.
    - Update the package list and install Docker:
-     ```
+     ```bash
      sudo apt update
      sudo apt install docker.io
      ```
@@ -193,13 +193,13 @@ This guide will walk you through the process of using EnigmaCracker on AWS. The 
 
 3. **Pull the Docker Image:**
    - Pull the EnigmaCracker image from your ECR repository:
-     ```
+     ```bash
      docker pull [your-account-id].dkr.ecr.[your-region].amazonaws.com/enigmacracker-docker:latest
      ```
 
 4. **Run the EnigmaCracker Container:**
    - Run the Docker container:
-     ```
+     ```bash
      docker run [your-account-id].dkr.ecr.[your-region].amazonaws.com/enigmacracker-docker:latest
      ```
 
