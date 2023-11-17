@@ -237,7 +237,7 @@ To monitor and interact with the EnigmaCracker container running on your EC2 ins
 
 ### Conclusion
 
-By following these steps, you can set up and run EnigmaCracker on an AWS EC2 instance using your Docker image stored in Amazon ECR. This setup allows you to leverage the scalability and flexibility of running EnigmaCracker.
+Setting up EnigmaCracker on an AWS EC2 instance with your Docker image in Amazon ECR offers improved scalability and reliability for your wallet scanning tasks. This approach provides a streamlined and effective solution to harness EnigmaCracker’s full potential on a powerful cloud platform.
 
 ---
 ## Updates
