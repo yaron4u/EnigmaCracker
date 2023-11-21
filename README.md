@@ -3,7 +3,7 @@ EnigmaCracker is a tool for brute forcing Crypto Wallets
 
 ![EnigmaCrackerV2](https://github.com/yaron4u/EnigmaCracker/assets/67191566/de72ea8a-2ec4-4b32-9580-bd80c9715f87)
 
-## **Disclaimer**
+## ⚠️**Disclaimer**⚠️
 
 This script is developed for educational and research purposes only.
 
