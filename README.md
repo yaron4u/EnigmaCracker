@@ -243,7 +243,7 @@ Setting up EnigmaCracker on an AWS EC2 instance with your Docker image in Amazon
 ## Updates
 
 - **Dual Cryptocurrency Detection**: EnigmaCracker now supports detection of both BTC and ETH wallets.
-- **AWS Integration**: Running EnigmaCracker in the cloud has never been easier! I've developed a comprehensive guide to help you deploy EnigmaCracker on AWS (Amazon Web Services). This integration enables you to utilize cloud computing resources for better performance and scalability. The guide includes detailed instructions for setting up EnigmaCracker on Amazon EC2 (Elastic Compute Cloud) instances and using Amazon ECR (Elastic Container Registry) for efficient cloud-based operations.
+- **AWS Integration**: I've developed a comprehensive guide to help you deploy EnigmaCracker on AWS (Amazon Web Services). This integration enables you to utilize cloud computing resources for better performance and scalability. The guide includes detailed instructions for setting up EnigmaCracker on Amazon EC2 (Elastic Compute Cloud) instances and using Amazon ECR (Elastic Container Registry) for efficient cloud-based operations.
 
 ## How to open the discovered wallet?
 
