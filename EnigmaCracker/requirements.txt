@@ -1,9 +1,3 @@
-os
 requests
 bip_utils
-sys
-subprocess
-logging
 python-dotenv
-platform
-time
