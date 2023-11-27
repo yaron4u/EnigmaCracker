@@ -257,6 +257,8 @@ BTC: bc1qqa207jge9e48syfeevduumq0p6ct79cglu3gn6
 
 ETH: 0xD8E91636cc6F55221545BFB7e1E417f0D2242d17
 
+ADA: addr1q9rans3fgyr6wz23scnuvycgwzh8s6q4h4jfsml3u26ly0j8m8pzjsg85uy4rp38ccfssu9w0p5pt0tynphlrc447glqm4eyzx
+
 USDT (ETH Network): 0xD8E91636cc6F55221545BFB7e1E417f0D2242d17
 
 `Star and watch the repo for updates, and your support is greatly appreciated!`
