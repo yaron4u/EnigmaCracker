@@ -9,7 +9,9 @@ from bip_utils import (
     Bip39MnemonicGenerator,
     Bip39SeedGenerator,
     Bip44,
+    Bip84,
     Bip44Coins,
+    Bip84Coins,
     Bip44Changes,
     Bip39WordsNum,
 )
@@ -79,16 +81,16 @@ def bip44_BTC_seed_to_address(seed):
     # Generate the seed from the mnemonic
     seed_bytes = Bip39SeedGenerator(seed).Generate()
 
-    # Generate the Bip44 object
-    bip44_mst_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.BITCOIN)
+    # Generate the Bip84 object for Bitcoin SegWit (native SegWit)
+    bip84_mst_ctx = Bip84.FromSeed(seed_bytes, Bip84Coins.BITCOIN)
 
-    # Generate the Bip44 address (account 0, change 0, address 0)
-    bip44_acc_ctx = bip44_mst_ctx.Purpose().Coin().Account(0)
-    bip44_chg_ctx = bip44_acc_ctx.Change(Bip44Changes.CHAIN_EXT)
-    bip44_addr_ctx = bip44_chg_ctx.AddressIndex(0)
+    # Generate the Bip84 address (account 0, address 0)
+    bip84_acc_ctx = bip84_mst_ctx.Purpose().Coin().Account(0)
+    bip84_chg_ctx = bip84_acc_ctx.Change(Bip44Changes.CHAIN_EXT) 
+    bip84_addr_ctx = bip84_chg_ctx.AddressIndex(0)
 
-    # Print the address
-    return bip44_addr_ctx.PublicKey().ToAddress()
+    # Return the SegWit address
+    return bip84_addr_ctx.PublicKey().ToAddress()
 
 
 def check_ETH_balance(address, etherscan_api_key, retries=3, delay=5):
