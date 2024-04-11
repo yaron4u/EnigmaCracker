@@ -247,7 +247,7 @@ Setting up EnigmaCracker on an AWS EC2 instance with your Docker image in Amazon
 
 ## How to open the discovered wallet?
 
-For assistance with accessing a discovered wallet, reach me out to [vanitious@gmail.com](mailto:vanitious@gmail.com), I will personally help you!
+For assistance with accessing a discovered wallet, reach me out to [vanitious@gmail.com](mailto:vanitious@gmail.com), for paid service that I provide.
 
 (I will not help anybody that asks for help to setup EnigmaCracker, every email in that subject will be ignored)
 
