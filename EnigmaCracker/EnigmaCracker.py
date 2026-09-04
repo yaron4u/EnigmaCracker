@@ -123,7 +123,7 @@ def bip44_BTC_seed_to_address(seed):
 
 def check_ETH_balance(address, etherscan_api_key, retries=3, delay=5):
     # Etherscan API endpoint to check the balance of an address
-    api_url = f"https://api.etherscan.io/api?module=account&action=balance&address={address}&tag=latest&apikey={etherscan_api_key}"
+    api_url = f"https://api.etherscan.io/v2/api?chainid=1&module=account&action=balance&address={address}&tag=latest&apikey={etherscan_api_key}"
 
     for attempt in range(retries):
         try:
